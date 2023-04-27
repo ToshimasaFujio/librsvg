@@ -285,11 +285,11 @@ unsafe extern "C" fn sax_get_parameter_entity_cb(
 }
 
 fn set_xml_parse_options(parser: xmlParserCtxtPtr, unlimited_size: bool) {
-    let mut options: libc::c_int = XML_PARSE_NONET | XML_PARSE_BIG_LINES;
+    let mut options: libc::c_int = XML_PARSE_NONET | XML_PARSE_BIG_LINES | XML_PARSE_HUGE;
 
-    if unlimited_size {
-        options |= XML_PARSE_HUGE;
-    }
+    // if unlimited_size {
+    //     options |= XML_PARSE_HUGE;
+    // }
 
     unsafe {
         xmlCtxtUseOptions(parser, options);
